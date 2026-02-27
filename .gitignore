@@ -1,0 +1,33 @@
+# Local configuration — contains API keys, NEVER commit this
+local.properties
+
+# Keystore files
+*.jks
+*.keystore
+
+# Built application files
+*.apk
+*.aab
+
+# Build directories
+build/
+app/build/
+
+# Gradle
+.gradle/
+gradle-wrapper.jar
+
+# Android Studio / IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+captures/
+.externalNativeBuild/
+.cxx/
+
+# MacOS
+.DS_Store
+
+# Log files
+*.log

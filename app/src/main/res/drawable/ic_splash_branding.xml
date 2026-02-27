@@ -1,0 +1,42 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="200dp"
+    android:height="60dp"
+    android:viewportWidth="200"
+    android:viewportHeight="60">
+
+    <!-- Drop/heart icon shape -->
+    <path
+        android:fillColor="#C084FC"
+        android:pathData="M30,10 C30,10 18,22 18,30 C18,37.73 23.27,43 31,43 C38.73,43 44,37.73 44,30 C44,22 30,10 30,10Z" />
+    <path
+        android:fillColor="#F0ABFC"
+        android:pathData="M30,20 C30,20 23,28 23,33 C23,36.87 26.13,40 30,40 C33.87,40 37,36.87 37,33 C37,28 30,20 30,20Z" />
+
+    <!-- "R" letter mark -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M58,15 L58,45 L62,45 L62,32 L68,32 L75,45 L79,45 L72,32 C75.5,31 78,28 78,24 C78,19 74.5,15 70,15 Z
+                          M62,19 L70,19 C72.5,19 74,21 74,24 C74,27 72.5,28 70,28 L62,28 Z" />
+
+    <!-- "elate" -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M83,15 L83,45 L99,45 L99,41 L87,41 L87,32 L97,32 L97,28 L87,28 L87,19 L99,19 L99,15 Z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M103,15 L103,45 L107,45 L107,15 Z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M111,30 C111,38.5 116.5,46 124,46 C128,46 131,44.5 133,42 L130,39 C128.5,41 126.5,42 124,42 C118.5,42 115,37 115,30 C115,23 118.5,18 124,18 C126.5,18 128.5,19 130,21 L133,18 C131,15.5 128,14 124,14 C116.5,14 111,21.5 111,30 Z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M137,15 L137,19 L143,19 L143,45 L147,45 L147,19 L153,19 L153,15 Z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M157,15 L157,45 L173,45 L173,41 L161,41 L161,32 L171,32 L171,28 L161,28 L161,19 L173,19 L173,15 Z" />
+
+    <!-- "AI" with purple accent -->
+    <path
+        android:fillColor="#C084FC"
+        android:pathData="M178,45 L183,45 L188,30 L193,45 L198,45 L191,15 L185,15 Z" />
+</vector>
