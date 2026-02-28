@@ -5,4 +5,5 @@ object Routes {
     const val HOME = "home"
     const val LOADING = "loading"
     const val DASHBOARD = "dashboard"
+    const val HISTORY = "history"
 }

@@ -10,6 +10,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.relateai.app.ui.screens.dashboard.DashboardScreen
+import com.relateai.app.ui.screens.history.HistoryScreen
+import com.relateai.app.ui.screens.history.HistoryViewModel
 import com.relateai.app.ui.screens.home.AnalyzerViewModel
 import com.relateai.app.ui.screens.home.HomeScreen
 import com.relateai.app.ui.screens.home.UiState
@@ -90,7 +92,8 @@ fun RelateAINavGraph(
                 uiState = uiState,
                 onAnalyzeClick = { viewModel.startAnalysis() },
                 onResetClick = { viewModel.reset() },
-                onPickFile = { uri -> viewModel.processFileUri(uri) }
+                onPickFile = { uri -> viewModel.processFileUri(uri) },
+                onHistoryClick = { navController.navigate(Routes.HISTORY) }
             )
         }
 
@@ -106,6 +109,17 @@ fun RelateAINavGraph(
                     onNewAnalysis = { viewModel.reset() }
                 )
             }
+        }
+
+        composable(Routes.HISTORY) {
+            val historyViewModel: HistoryViewModel = hiltViewModel()
+            val records by historyViewModel.records.collectAsStateWithLifecycle()
+            HistoryScreen(
+                records = records,
+                onBack = { navController.popBackStack() },
+                onDeleteRecord = { historyViewModel.delete(it) },
+                onDeleteAll = { historyViewModel.deleteAll() }
+            )
         }
     }
 }

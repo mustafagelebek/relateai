@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.relateai.app.data.model.AnalysisResult
 import com.relateai.app.data.parser.ChatParser
 import com.relateai.app.data.repository.GeminiRepository
+import com.relateai.app.data.repository.HistoryRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -32,7 +33,8 @@ sealed interface UiState {
 class AnalyzerViewModel @Inject constructor(
     @ApplicationContext private val context: Context,
     private val chatParser: ChatParser,
-    private val geminiRepository: GeminiRepository
+    private val geminiRepository: GeminiRepository,
+    private val historyRepository: HistoryRepository
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow<UiState>(UiState.Idle)
@@ -75,7 +77,7 @@ class AnalyzerViewModel @Inject constructor(
     }
 
     /**
-     * Starts the Gemini AI analysis.
+     * Starts the AI analysis and saves result to history on success.
      */
     fun startAnalysis() {
         val currentState = _uiState.value
@@ -86,7 +88,11 @@ class AnalyzerViewModel @Inject constructor(
 
             val result = geminiRepository.analyzeChat(currentState.formattedChat)
             _uiState.value = result.fold(
-                onSuccess = { UiState.Success(it) },
+                onSuccess = { analysisResult ->
+                    // Auto-save to Room DB
+                    historyRepository.saveAnalysis(analysisResult)
+                    UiState.Success(analysisResult)
+                },
                 onFailure = { UiState.Error("Analiz başarısız: ${it.localizedMessage}") }
             )
         }

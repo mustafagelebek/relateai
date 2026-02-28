@@ -30,7 +30,8 @@ fun HomeScreen(
     uiState: UiState,
     onAnalyzeClick: () -> Unit,
     onResetClick: () -> Unit,
-    onPickFile: (android.net.Uri) -> Unit
+    onPickFile: (android.net.Uri) -> Unit,
+    onHistoryClick: () -> Unit
 ) {
     Box(
         modifier = Modifier
@@ -57,20 +58,45 @@ fun HomeScreen(
                 .padding(horizontal = 24.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Spacer(modifier = Modifier.height(80.dp))
+            Spacer(modifier = Modifier.height(56.dp))
 
-            // Logo
-            Text(
-                text = "RelateAI",
-                style = MaterialTheme.typography.headlineLarge,
-                fontWeight = FontWeight.Bold,
-                color = Color.White
-            )
-            Text(
-                text = "İlişki Analiz Asistanın",
-                style = MaterialTheme.typography.bodyMedium,
-                color = Purple80.copy(alpha = 0.7f)
-            )
+            // Header row: Logo + History button
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Column(modifier = Modifier.weight(1f)) {
+                    Text(
+                        text = "RelateAI",
+                        style = MaterialTheme.typography.headlineLarge,
+                        fontWeight = FontWeight.Bold,
+                        color = Color.White
+                    )
+                    Text(
+                        text = "İlişki Analiz Asistanın",
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = Purple80.copy(alpha = 0.7f)
+                    )
+                }
+                IconButton(
+                    onClick = onHistoryClick,
+                    modifier = Modifier
+                        .size(44.dp)
+                        .background(
+                            Brush.linearGradient(
+                                listOf(Purple40.copy(alpha = 0.25f), Pink40.copy(alpha = 0.25f))
+                            ),
+                            CircleShape
+                        )
+                ) {
+                    Icon(
+                        Icons.Default.History,
+                        contentDescription = "Geçmiş",
+                        tint = Purple80,
+                        modifier = Modifier.size(20.dp)
+                    )
+                }
+            }
 
             Spacer(modifier = Modifier.height(64.dp))
 
